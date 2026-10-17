@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-09-30",
+  "status": "页面内真实扫码、独立登录、7个检索式、真实笔记解析、样本排序和历史保存已在本机端到端实测；不代表网页长期稳定或全平台搜索量",
+  "endToEndVerified": true,
+  "selectors": {
+    "title": "#detail-title",
+    "text": "#detail-desc",
+    "publishedAt": ".note-content .bottom-container .date",
+    "likes": ".interaction-container .engage-bar .like-wrapper .count",
+    "collects": ".interaction-container .engage-bar .collect-wrapper .count",
+    "comments": ".interaction-container .engage-bar .chat-wrapper .count"
+  }
+}

@@ -1,0 +1,13 @@
+data/
+.venv/
+__pycache__/
+*.py[cod]
+settings.local.json
+.env
+.env.*
+.DS_Store
+dist/
+*.log
+*.sqlite*
+session.key
+DevToolsActivePort

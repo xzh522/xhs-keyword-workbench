@@ -1,0 +1,2 @@
+# Optional. The HTML, keyword library, import analysis and history need only Python.
+playwright==1.63.0
