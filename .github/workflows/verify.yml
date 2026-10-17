@@ -1,0 +1,32 @@
+name: Verify local tool
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+        python: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Deterministic local tests (no social login)
+        run: python -m unittest discover -s tests -v
+      - name: Create privacy-clean source archives
+        run: python scripts/package_public.py --output dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-downloads-${{ matrix.os }}-${{ matrix.python }}
+          path: dist/*
+          if-no-files-found: error
